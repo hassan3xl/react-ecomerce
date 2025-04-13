@@ -11,7 +11,7 @@ const ProductLikes = ({ productId }) => {
 		const fetchLikes = async () => {
 			try {
 				setLoading(true);
-				const response = await API.get(`api/products/${productId}/likes/`);
+				const response = await API.get(`shop/products/${productId}/likes/`);
 
 				setLikes(response.data.likes);
 				setUserLiked(response.data.user_liked);

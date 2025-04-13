@@ -10,7 +10,7 @@ const Login = () => {
 	const handleGoogleLogin = async (response) => {
 		try {
 			const { credential } = response;
-			const backendResponse = await API.post("api/auth/social/google/", {
+			const backendResponse = await API.post("shop/auth/social/google/", {
 				access_token: credential,
 			});
 

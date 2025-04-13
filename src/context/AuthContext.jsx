@@ -1,6 +1,7 @@
 // context/AuthContext.jsx
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+import { API } from "../services/apiService";
 
 const AuthContext = createContext();
 
@@ -13,10 +14,9 @@ export const AuthProvider = ({ children }) => {
 	// Fetch user info if token exists
 	useEffect(() => {
 		if (accessToken) {
-			axios
-				.get("http://localhost:8000/api/auth/user/", {
-					headers: { Authorization: `Bearer ${accessToken}` },
-				})
+			API.get("shop/auth/user/", {
+				headers: { Authorization: `Bearer ${accessToken}` },
+			})
 				.then((res) => setUser(res.data))
 				.catch(() => {
 					logout();

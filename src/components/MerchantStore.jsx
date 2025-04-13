@@ -4,7 +4,7 @@ import Products from "./Products";
 import { API } from "../services/apiService";
 import Loader from "./Loader";
 
-const Merchantstore = () => {
+const MerchantStore = () => {
 	const { merchantId } = useParams();
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -40,4 +40,4 @@ const Merchantstore = () => {
 	);
 };
 
-export default Merchantstore;
+export default MerchantStore;

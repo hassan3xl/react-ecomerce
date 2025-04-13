@@ -184,7 +184,9 @@ const ProductDetail = () => {
 					{/* Merchant Info */}
 					{merchant?.name && (
 						<div className="border-t pt-3 mb-4">
+							<img src={merchant.logo} alt="logo" />
 							<p className="font-medium">Sold by: {merchant.name}</p>
+
 							{merchant.store_url && (
 								<Link
 									to={merchant.store_url}

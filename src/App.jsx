@@ -13,11 +13,13 @@ import {
 	Route,
 } from "react-router-dom";
 import Home from "./components/Home";
-import ProductDetail from "./components/ProductsDetails";
-import ProductsList from "./components/ProductsList";
-import Merchantstore from "./components/Merchantstore";
-import GoogleAuthNav from "./components/GoogleAuthNav";
+// import ProductDetailss from "./components/ZProductsDetails";
+import ProductDetails from "./components/ProductDetails";
 
+import ProductsList from "./components/ProductsList";
+import Merchantstore from "./components/MerchantStore";
+import GoogleAuthNav from "./components/GoogleAuthNav";
+import MerchantPage from "./merchants/MerchantPage";
 import Orders from "./account/Orders";
 
 const App = () => {
@@ -37,11 +39,13 @@ const App = () => {
 					<Route path="/account" element={<Dashboard />}></Route>
 					<Route path="/account/orders/" element={<Orders />}></Route>
 
-					<Route path="/products/:productId" element={<ProductDetail />} />
+					<Route path="/products/:productId" element={<ProductDetails />} />
+
 					<Route
 						path="/merchant/:merchantId/store"
 						element={<Merchantstore />}
 					/>
+					{/* <Route path="/merchant/:merchantId/" element={<MerchantPage />} /> */}
 				</Routes>
 			</Router>
 		</div>

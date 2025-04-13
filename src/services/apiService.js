@@ -69,7 +69,7 @@ export const getCourseDetails = (id) => API.get(`internships/${id}/`);
 // Product Endpoints
 export const getProducts = async () => {
 	try {
-		const response = await API.get("api/products/");
+		const response = await API.get("shop/products/");
 
 		// Handle the specific response format from your backend
 		if (response.data && Array.isArray(response.data.data)) {
@@ -90,7 +90,7 @@ export const getProducts = async () => {
 
 export const getProductById = async (productId) => {
 	try {
-		const response = await API.get(`api/products/${productId}/`);
+		const response = await API.get(`shop/products/${productId}/`);
 		return response.data;
 	} catch (error) {
 		console.error(`Error fetching product ${productId}:`, error);
@@ -100,7 +100,7 @@ export const getProductById = async (productId) => {
 
 export const getCategories = async () => {
 	try {
-		const response = await API.get("api/categories/");
+		const response = await API.get("shop/categories/");
 		// Handle both array responses and paginated responses
 		if (Array.isArray(response.data)) {
 			return response.data;
@@ -118,7 +118,7 @@ export const getCategories = async () => {
 
 export const getCategoryById = async (categoryId) => {
 	try {
-		const response = await API.get(`api/categories/${categoryId}/`);
+		const response = await API.get(`shop/categories/${categoryId}/`);
 		return response.data;
 	} catch (error) {
 		console.error(`Error fetching category ${categoryId}:`, error);
@@ -128,7 +128,7 @@ export const getCategoryById = async (categoryId) => {
 
 export const getUserOrders = async () => {
 	try {
-		const response = await API.get("api/orders/");
+		const response = await API.get("shop/orders/");
 		return response.data;
 	} catch (error) {
 		console.error("Error fetching user orders:", error);
@@ -137,7 +137,7 @@ export const getUserOrders = async () => {
 };
 export const getOrderById = async (orderId) => {
 	try {
-		const response = await API.get(`api/orders/${orderId}/`);
+		const response = await API.get(`shop/orders/${orderId}/`);
 		return response.data;
 	} catch (error) {
 		console.error(`Error fetching order ${orderId}:`, error);
@@ -146,7 +146,7 @@ export const getOrderById = async (orderId) => {
 };
 export const getUserProfile = async () => {
 	try {
-		const response = await API.get("auth/profile/");
+		const response = await API.get("shop/auth/profile/");
 		return response.data;
 	} catch (error) {
 		console.error("Error fetching user profile:", error);
@@ -155,7 +155,7 @@ export const getUserProfile = async () => {
 };
 export const updateUserProfile = async (data) => {
 	try {
-		const response = await API.put("auth/profile/", data, {
+		const response = await API.put("shop/auth/profile/", data, {
 			headers: { "Content-Type": "multipart/form-data" },
 		});
 		return response.data;
