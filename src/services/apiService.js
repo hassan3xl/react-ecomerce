@@ -3,7 +3,8 @@ import axios from "axios";
 
 // Create an Axios instance
 export const API = axios.create({
-	baseURL: "http://127.0.0.1:8000/", // or your production backend
+	// baseURL: "http://127.0.0.1:8000/", //development
+	baseURL: "https://prototype-backend-1uqm.onrender.com/", // production
 });
 
 // Add JWT token to request headers if available
@@ -59,10 +60,6 @@ API.interceptors.response.use(
 		return Promise.reject(error);
 	}
 );
-
-// Authentication Endpoints
-export const register = (data) => API.post("auth/register/", data);
-export const login = (credentials) => API.post("auth/login/", credentials);
 
 // Product Endpoints
 export const getProducts = async () => {

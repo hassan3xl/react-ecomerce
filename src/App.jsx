@@ -1,7 +1,5 @@
 import React from "react";
-import Navbar from "./components/Navbar";
 import Login from "./Auth/Login";
-import Register from "./Auth/Register";
 import UserProfile from "./Auth/UserProfile";
 
 // accounts
@@ -31,7 +29,6 @@ const App = () => {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/login" element={<Login />}></Route>
-					<Route path="/register" element={<Register />}></Route>
 					<Route path="/verify-email/:key" element={<EmailVerify />} />
 
 					<Route path="/products" element={<ProductsList />}></Route>

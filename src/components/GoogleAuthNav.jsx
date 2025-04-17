@@ -40,15 +40,7 @@ const GoogleAuthNav = () => {
 						<>
 							<li>
 								<Link to="/login" className="hover:text-blue-300 font-medium">
-									Login
-								</Link>
-							</li>
-							<li>
-								<Link
-									to="/register"
-									className="hover:text-blue-300 font-medium"
-								>
-									Register
+									Sign In
 								</Link>
 							</li>
 						</>
