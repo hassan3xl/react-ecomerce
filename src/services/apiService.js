@@ -63,8 +63,6 @@ API.interceptors.response.use(
 // Authentication Endpoints
 export const register = (data) => API.post("auth/register/", data);
 export const login = (credentials) => API.post("auth/login/", credentials);
-export const userInternshipData = () => API.get("internships/");
-export const getCourseDetails = (id) => API.get(`internships/${id}/`);
 
 // Product Endpoints
 export const getProducts = async () => {

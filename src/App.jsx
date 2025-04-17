@@ -19,8 +19,8 @@ import ProductDetails from "./components/ProductDetails";
 import ProductsList from "./components/ProductsList";
 import Merchantstore from "./components/MerchantStore";
 import GoogleAuthNav from "./components/GoogleAuthNav";
-import MerchantPage from "./merchants/MerchantPage";
 import Orders from "./account/Orders";
+import EmailVerify from "./Auth/EmailVerify";
 
 const App = () => {
 	return (
@@ -32,6 +32,8 @@ const App = () => {
 					<Route path="/" element={<Home />} />
 					<Route path="/login" element={<Login />}></Route>
 					<Route path="/register" element={<Register />}></Route>
+					<Route path="/verify-email/:key" element={<EmailVerify />} />
+
 					<Route path="/products" element={<ProductsList />}></Route>
 					<Route path="/profile" element={<UserProfile />}></Route>
 
