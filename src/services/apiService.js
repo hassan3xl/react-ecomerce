@@ -3,8 +3,8 @@ import axios from "axios";
 
 // Create an Axios instance
 export const API = axios.create({
-	baseURL: "http://localhost:8000/", //development
-	// baseURL: "https://prototype-backend-1uqm.onrender.com/", // production
+	// baseURL: "http://localhost:8000/", //development
+	baseURL: "https://prototype-backend-1uqm.onrender.com/", // production
 });
 
 // Add JWT token to request headers if available

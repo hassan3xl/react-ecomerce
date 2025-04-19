@@ -26,6 +26,13 @@ const ProductCard = ({ products, categories }) => {
 					(p) => p.category === allCategories[activeCategory].title
 			  );
 
+	const discountPercentage = filteredProducts.sale_price
+		? Math.round(
+				((filteredProducts.price - filteredProducts.sale_price) /
+					filteredProducts.price) *
+					100
+		  )
+		: 0;
 	return (
 		<div className="max-w-screen mx-auto bg-gray-50 text-gray-800">
 			{/* Categories Horizontal Scroll */}
@@ -86,24 +93,34 @@ const ProductCard = ({ products, categories }) => {
 							className="bg-white rounded-lg shadow-sm overflow-hidden"
 							key={product.id}
 						>
-							<div className="relative">
-								<img
-									src={product.image.image_url}
-									alt={product.name}
-									className="w-full aspect-square object-cover"
-								/>
-								<div className="absolute top-1 right-1 bg-red-500 text-white text-xs px-1 rounded">
-									-{product.discount}
-								</div>
+							<div className="border rounded-lg overflow-hidden mb-4 bg-white">
+								{product.images && product.images.length > 0 ? (
+									<div className="relative">
+										<img
+											src={product.images.image_url}
+											alt={product.name}
+											className="w-full h-80 object-contain"
+										/>
+										{product.sale_price && (
+											<div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-sm">
+												-{discountPercentage}%
+											</div>
+										)}
+									</div>
+								) : (
+									<div className="w-full h-80 bg-gray-100 flex items-center justify-center">
+										<span>No image available</span>
+									</div>
+								)}
 							</div>
 							<div className="p-2">
 								<h3 className="text-sm truncate">{product.name}</h3>
 								<div className="flex items-baseline mt-1">
 									<span className="text-red-500 font-bold">
-										${product.sale_price}
+										N {product.sale_price}
 									</span>
 									<span className="ml-1 text-xs text-gray-400 line-through">
-										${product.price}
+										N s{product.price}
 									</span>
 								</div>
 								<div className="flex items-center text-xs mt-1">

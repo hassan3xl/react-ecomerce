@@ -120,10 +120,10 @@ const FlashSaleSection = ({ products }) => {
 							<h3 className="text-sm truncate">{product.name}</h3>
 							<div className="flex items-baseline mt-1">
 								<span className="text-red-500 font-bold">
-									${product.sale_price}
+									N {product.sale_price}
 								</span>
 								<span className="ml-1 text-xs text-gray-400 line-through">
-									${product.price}
+									N {product.price}
 								</span>
 							</div>
 							<div className="flex items-center text-xs mt-1">
