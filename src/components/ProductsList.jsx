@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { getProducts } from "../services/apiService";
+import { getCategories, getProducts } from "../services/apiService";
 import Products from "./Products";
+import ProductCard from "./ProductCard";
+ProductCard;
 
 const ProductsList = () => {
 	const [products, setProducts] = useState([]);
+	const [categories, setCategories] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
@@ -23,6 +26,22 @@ const ProductsList = () => {
 
 		fetchProducts();
 	}, []);
+	useEffect(() => {
+		const fetchCategories = async () => {
+			try {
+				setLoading(true);
+				const data = await getCategories();
+				// getProducts already handles returning an empty array if needed
+				setCategories(data);
+				setLoading(false);
+			} catch (err) {
+				setError("Failed to load products");
+				setLoading(false);
+			}
+		};
+
+		fetchCategories();
+	}, []);
 
 	if (loading)
 		return <div className="text-center p-4">Loading products...</div>;
@@ -30,12 +49,7 @@ const ProductsList = () => {
 	if (!products.length)
 		return <div className="text-center p-4">No products found</div>;
 
-	return (
-		<div className="max-w-6xl mx-auto p-4">
-			<h1 className="text-xl font-bold mb-4">Products</h1>
-			<Products products={products} />
-		</div>
-	);
+	return <ProductCard products={products} categories={categories} />;
 };
 
 export default ProductsList;

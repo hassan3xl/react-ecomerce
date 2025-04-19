@@ -16,7 +16,7 @@ const UserProfile = () => {
 	useEffect(() => {
 		const fetchProfile = async () => {
 			try {
-				const response = await API.get("/auth/profile/");
+				const response = await API.get("shop/auth/profile/");
 				if (response.data.success) {
 					setProfile(response.data.data);
 					setForm({
@@ -56,7 +56,7 @@ const UserProfile = () => {
 		});
 
 		try {
-			const res = await API.put("/auth/profile/", formData, {
+			const res = await API.put("shop/auth/profile/", formData, {
 				headers: { "Content-Type": "multipart/form-data" },
 			});
 			if (res.data.success) {

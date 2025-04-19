@@ -3,8 +3,8 @@ import axios from "axios";
 
 // Create an Axios instance
 export const API = axios.create({
-	// baseURL: "http://127.0.0.1:8000/", //development
-	baseURL: "https://prototype-backend-1uqm.onrender.com/", // production
+	baseURL: "http://localhost:8000/", //development
+	// baseURL: "https://prototype-backend-1uqm.onrender.com/", // production
 });
 
 // Add JWT token to request headers if available
@@ -93,18 +93,40 @@ export const getProductById = async (productId) => {
 	}
 };
 
+export const getProductsByCategory = async (categoryId, params = {}) => {
+	const queryParams = new URLSearchParams();
+
+	// Add optional params
+	if (params.limit) queryParams.append("limit", params.limit);
+	if (params.page) queryParams.append("page", params.page);
+	if (params.sort) queryParams.append("sort", params.sort);
+	if (params.order) queryParams.append("order", params.order);
+
+	const queryString = queryParams.toString()
+		? `?${queryParams.toString()}`
+		: "";
+
+	try {
+		const response = await fetch(
+			`shop/products/category/${categoryId}${queryString}`
+		);
+
+		if (!response.ok) {
+			throw new Error("Failed to fetch products");
+		}
+
+		const data = await response.json();
+		return data.json();
+	} catch (error) {
+		console.error("Error fetching category products:", error);
+		throw error;
+	}
+};
+
 export const getCategories = async () => {
 	try {
 		const response = await API.get("shop/categories/");
-		// Handle both array responses and paginated responses
-		if (Array.isArray(response.data)) {
-			return response.data;
-		} else if (response.data && Array.isArray(response.data.results)) {
-			return response.data.results;
-		} else {
-			console.error("Unexpected categories response format:", response.data);
-			return [];
-		}
+		return response.data;
 	} catch (error) {
 		console.error("Error fetching categories:", error);
 		return [];

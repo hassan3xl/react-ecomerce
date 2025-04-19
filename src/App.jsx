@@ -10,24 +10,27 @@ import {
 	Navigate,
 	Route,
 } from "react-router-dom";
-import Home from "./components/Home";
+import HomePage from "./components/HomePage";
 // import ProductDetailss from "./components/ZProductsDetails";
 import ProductDetails from "./components/ProductDetails";
 
 import ProductsList from "./components/ProductsList";
 import Merchantstore from "./components/MerchantStore";
-import GoogleAuthNav from "./components/GoogleAuthNav";
+import Navbar from "./components/Navbar";
+
 import Orders from "./account/Orders";
 import EmailVerify from "./Auth/EmailVerify";
+import MerchantStorefront from "./merchants/MerchantStorefront";
+import AllMerchants from "./merchants/AllMerchants";
 
 const App = () => {
 	return (
 		<div>
 			<Router>
-				{/* <Navbar /> */}
-				<GoogleAuthNav />
+				<Navbar />
+				{/* <GoogleAuthNav /> */}
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<HomePage />} />
 					<Route path="/login" element={<Login />}></Route>
 					<Route path="/verify-email/:key" element={<EmailVerify />} />
 
@@ -41,9 +44,11 @@ const App = () => {
 					<Route path="/products/:productId" element={<ProductDetails />} />
 
 					<Route
-						path="/merchant/:merchantId/store"
-						element={<Merchantstore />}
+						path="/merchants/:merchantId/"
+						element={<MerchantStorefront />}
 					/>
+					<Route path="/merchants/" element={<AllMerchants />}></Route>
+
 					{/* <Route path="/merchant/:merchantId/" element={<MerchantPage />} /> */}
 				</Routes>
 			</Router>
